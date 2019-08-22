@@ -1,18 +1,18 @@
 from django.shortcuts import render, HttpResponse
-    from django.http import JsonResponse
-    from .forms import *
-    from pusher import Pusher
-    import json
+from django.http import JsonResponse
+from .forms import *
+from pusher import Pusher
+import json
 
-    #instantiate pusher
-    pusher = Pusher(app_id=u'XXX_APP_ID', key=u'XXX_APP_KEY', secret=u'XXX_APP_SECRET', cluster=u'XXX_APP_CLUSTER')
-    # Create your views here.
-    # function that serves the welcome page
-    def index(request):
-        # get all current photos ordered by the latest
-        all_documents = Feed.objects.all().order_by('-id')
-        # return the index.html template, passing in all the feeds
-        return render(request, 'index.html', {'all_documents': all_documents})
+#instantiate pusher
+pusher = Pusher(app_id=u'XXX_APP_ID', key=u'XXX_APP_KEY', secret=u'XXX_APP_SECRET', cluster=u'XXX_APP_CLUSTER')
+# Create your views here.
+# function that serves the welcome page
+def index(request):
+    # get all current photos ordered by the latest
+    all_documents = Feed.objects.all().order_by('-id')
+    # return the index.html template, passing in all the feeds
+    return render(request, 'index.html', {'all_documents': all_documents})
 
     #function that authenticates the private channel 
     def pusher_authentication(request):

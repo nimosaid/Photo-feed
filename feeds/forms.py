@@ -1,7 +1,7 @@
 from django import forms
-    from .models import Feed
+from .models import Feeds
 
-    class DocumentForm(forms.ModelForm):
-        class Meta:
-            model = Feed
-            fields = ('description', 'document', )
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Feeds
+        fields = ('description', 'document', )
